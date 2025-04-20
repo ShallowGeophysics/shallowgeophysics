@@ -1,0 +1,552 @@
+:root {
+    /* Original color scheme */
+    --primary-color: #4682b4; /* Steel Blue */
+    --primary-light: #87ceeb; /* Sky Blue */
+    --secondary-color: #add8e6; /* Light Blue */
+    --secondary-light: #e6f0fa; /* Very Light Blue */
+    --accent-color: #f0f8ff; /* Alice Blue */
+    --text-dark: #000000;
+    --text-light: #ffffff;
+    --background-light: #f0f8ff; /* Alice Blue */
+    --background-dark: #e6f0fa; /* Very Light Blue */
+    --success-color: #28a745; /* Green */
+    --warning-color: #664d03; /* Warning Yellow */
+    --error-color: #dc3545; /* Red */
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* General styles */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--background-light);
+    padding-top: 140px; /* Header height (120px) + extra space (20px) */
+    color: var(--text-dark);
+}
+
+/* Home page background image */
+body.home-page {
+    background-image: url('images/home-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+body.home-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    opacity: 0.5; /* 50% opacity for background image */
+    z-index: -1; /* Ensure it stays behind all content */
+}
+
+/* Header styles */
+header {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-sizing: border-box;
+    height: 120px;
+}
+
+/* Logo styles */
+header img {
+    max-height: 100px;
+    width: auto;
+    object-fit: contain;
+    margin-right: 0;
+}
+
+/* Company name styles */
+.company-name {
+    background-color: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 25px;
+    padding: 8px 20px;
+    margin: 0 20px;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: black;
+    white-space: nowrap;
+    text-decoration: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.company-name:hover {
+    background-color: var(--text-light);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Navigation styles */
+nav {
+    position: relative;
+    flex: 1;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-dark);
+    padding: 10px 15px;
+    display: block;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 2px solid var(--secondary-color);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    font-weight: 500;
+}
+
+nav ul li:hover > a {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+/* Dropdown styles */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--background-light);
+    min-width: 250px;
+    box-shadow: 0 8px 16px var(--shadow-color);
+    border-radius: 8px;
+    border: 2px solid var(--secondary-color);
+    z-index: 1000;
+    max-height: 80vh;
+    overflow-y: auto;
+    overflow: hidden;
+}
+
+/* Add this back to make dropdown work on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content li {
+    margin: 0;
+}
+
+.dropdown-content a {
+    border: none !important;
+    border-radius: 0 !important;
+    border-bottom: 1px solid var(--background-dark) !important;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--secondary-light) !important;
+    color: var(--text-light) !important;
+    padding-left: 25px;
+}
+
+/* Ensure dropdown appears below the navigation item */
+nav ul li.dropdown {
+    position: relative;
+}
+
+nav ul li.dropdown .dropdown-content {
+    top: 100%;
+    left: 0;
+}
+
+/* Mobile adjustments for dropdown */
+@media (max-width: 768px) {
+    .dropdown-content {
+        position: static;
+        width: 100%;
+        max-height: none;
+        margin-top: 5px;
+        box-shadow: none;
+        border-width: 1px;
+    }
+
+    nav ul li.dropdown .dropdown-content {
+        margin-top: 5px;
+    }
+}
+
+/* Main content styles */
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    padding-bottom: 100px;
+    min-height: calc(100vh - 80px);
+}
+
+/* Page title styles */
+main > h1:first-child,
+main > h2:first-child {
+    margin-top: 0;
+    padding-top: 20px;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Welcome title styles */
+.welcome-title {
+    font-weight: 700;
+    font-size: 2em;
+    margin: 1rem 0 1.5rem 0;
+    color: var(--primary-color);
+    text-transform: none;
+}
+
+.welcome-title strong {
+    font-weight: 700;
+}
+
+/* Make all strong tags in headings extra bold */
+h1 strong, h2 strong {
+    font-weight: 900;
+}
+
+/* Headings */
+h1, h2 {
+    color: var(--primary-color);
+    position: relative;
+    margin: 1rem 0 1.5rem 0;
+    font-weight: 700;
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 1rem 0;
+}
+
+h1::after, h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(to right, var(--secondary-color), var(--secondary-light));
+    margin-top: 8px;
+    border-radius: 2px;
+}
+
+/* Section styles */
+section {
+    background: linear-gradient(135deg, var(--text-light), var(--background-light));
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    border: 1px solid rgba(0, 172, 193, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--shadow-color);
+}
+
+section img {
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+    position: relative;
+    z-index: 0; /* Ensure images stay below dropdowns */
+}
+
+main img {
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    position: relative;
+    z-index: 0; /* Ensure images stay below dropdowns */
+}
+
+.rates-image {
+    max-width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 0;
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid var(--secondary-color);
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background-color: var(--background-light);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+    background-color: var(--text-light);
+}
+
+button {
+    background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light));
+    color: var(--text-light);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+/* Footer styles */
+footer {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: var(--text-light);
+    padding: 15px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px var(--shadow-color);
+    z-index: 1000;
+    box-sizing: border-box;
+    height: 50px;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px;
+        height: auto;
+        min-height: 120px;
+    }
+
+    .company-name {
+        margin: 10px 0;
+        font-size: 1.2em;
+        text-align: center;
+    }
+
+    header img {
+        margin-right: 0;
+    }
+
+    body {
+        padding-top: 160px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+        gap: 5px;
+    }
+
+    nav ul li a {
+        text-align: center;
+    }
+
+    section {
+        margin: 15px 0;
+        padding: 20px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    h1, .welcome-title {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.3em;
+    }
+}
+
+/* Add smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Contact Form Styles */
+.contact-info {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, var(--background-light), var(--background-dark));
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    border: 1px solid var(--secondary-color);
+}
+
+.email-note {
+    color: var(--warning-color);
+    background-color: rgba(255, 214, 0, 0.1);
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+    border-left: 4px solid var(--accent-color);
+}
+
+.contact-info ol {
+    margin-left: 1.5rem;
+    padding-left: 0;
+}
+
+.contact-info li {
+    margin: 0.5rem 0;
+}
+
+#contact-form {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+button[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.alternative-contact {
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.email-link {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--success-color), #69f0ae);
+    color: var(--text-light);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 200, 83, 0.2);
+}
+
+.email-link:hover {
+    background: linear-gradient(135deg, #00e676, #69f0ae);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 200, 83, 0.3);
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    #contact-form {
+        padding: 1rem;
+        margin: 1rem;
+    }
+    
+    .contact-info {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 0.5rem;
+    }
+    
+    button[type="submit"] {
+        width: 100%;
+    }
+}

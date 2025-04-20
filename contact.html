@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - ShallowGeophysics</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="images/logo.png" alt="ShallowGeophysics LOGO">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="what-we-do.html">What Do We Do?</a></li>
+                <li class="dropdown">
+                    <a href="why-us.html">Why Us?</a>
+                    <ul class="dropdown-content">
+                        <li><a href="why-us.html#cost-effective">Cost-Effective Solutions</a></li>
+                        <li><a href="why-us.html#client-centric">Client-Centric Approach</a></li>
+                        <li><a href="why-us.html#expertise">Expertise and Experience</a></li>
+                        <li><a href="why-us.html#technology">Advanced Technology</a></li>
+                        <li><a href="why-us.html#quality">Quality Assurance</a></li>
+                        <li><a href="why-us.html#comprehensive">Comprehensive Services</a></li>
+                        <li><a href="why-us.html#customized">Customized Solutions</a></li>
+                        <li><a href="why-us.html#communication">Clear Communication</a></li>
+                        <li><a href="why-us.html#reporting">Interpretative Reporting</a></li>
+                        <li><a href="why-us.html#consultancy">Consultancy Services</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="what-we-process.html">What We Process?</a>
+                    <ul class="dropdown-content">
+                        <li><a href="what-we-process.html#sr">Seismic Refraction (SR)</a></li>
+                        <li><a href="what-we-process.html#masw">MASW</a></li>
+                        <li><a href="what-we-process.html#gpr">Ground Penetrating Radar (GPR)</a></li>
+                        <li><a href="what-we-process.html#ert">Electrical Resistivity Tomography (ERT)</a></li>
+                        <li><a href="what-we-process.html#em">Electromagnetic Survey (EM)</a></li>
+                        <li><a href="what-we-process.html#tem">Time Domain EM (TEM)</a></li>
+                        <li><a href="what-we-process.html#gravity">Microgravity Survey</a></li>
+                        <li><a href="what-we-process.html#mag">Magnetic Survey</a></li>
+                        <li><a href="what-we-process.html#ps">PS Suspension Logging</a></li>
+                        <li><a href="what-we-process.html#dhole">Downhole Seismic Testing</a></li>
+                        <li><a href="what-we-process.html#chole">Crosshole Seismic Testing</a></li>
+                        <li><a href="what-we-process.html#ctomo">Crosshole Tomography</a></li>
+                        <li><a href="what-we-process.html#fws">Full-wave Sonic</a></li>
+                        <li><a href="what-we-process.html#atv">Acoustic Televiewer</a></li>
+                        <li><a href="what-we-process.html#otv">Optical Televiewer</a></li>
+                        <li><a href="what-we-process.html#resistivity">Borehole Resistivity</a></li>
+                        <li><a href="what-we-process.html#caliper">Caliper Log</a></li>
+                    </ul>
+                </li>
+                <li><a href="charges.html">How Much We Charge?</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Contact Us</h1>
+        <div class="contact-info">
+            <p>Email us directly at: <strong>shallowgeophysics@gmail.com</strong></p>
+            <p class="email-note">⚠️ Important: To ensure you receive our response, please:</p>
+            <ol>
+                <li>Add our email address to your contacts</li>
+                <li>Check your spam folder if you don't receive a response within 24 hours</li>
+                <li>Use your business/company email if available</li>
+            </ol>
+        </div>
+        
+        <form id="contact-form" action="mailto:shallowgeophysics@gmail.com" method="POST" enctype="text/plain" onsubmit="return validateForm()">
+            <div class="form-group">
+                <label for="name">Name: *</label>
+                <input type="text" id="name" name="name" required minlength="2">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Your Email: *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="company">Company:</label>
+                <input type="text" id="company" name="company">
+            </div>
+
+            <div class="form-group">
+                <label for="subject">Subject: *</label>
+                <input type="text" id="subject" name="subject" required minlength="5">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message: *</label>
+                <textarea id="message" name="message" rows="6" required minlength="20"></textarea>
+            </div>
+
+            <button type="submit" id="submit-btn">Send Message</button>
+        </form>
+
+        <div class="alternative-contact">
+            <p>Alternatively, you can:</p>
+            <a href="mailto:shallowgeophysics@gmail.com" class="email-link">Open in your email client</a>
+        </div>
+    </main>
+    <footer>
+        <p>© 2025 ShallowGeophysics</p>
+    </footer>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+            
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all required fields');
+                return false;
+            }
+            
+            if (name.length < 2) {
+                alert('Name must be at least 2 characters long');
+                return false;
+            }
+            
+            if (subject.length < 5) {
+                alert('Subject must be at least 5 characters long');
+                return false;
+            }
+            
+            if (message.length < 20) {
+                alert('Message must be at least 20 characters long');
+                return false;
+            }
+            
+            // Basic email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address');
+                return false;
+            }
+            
+            // Format the email body
+            const emailBody = `
+Name: ${name}
+Email: ${email}
+Company: ${document.getElementById('company').value}
+Subject: ${subject}
+
+Message:
+${message}
+            `;
+            
+            // Update the form action with the formatted body
+            const form = document.getElementById('contact-form');
+            form.action = `mailto:shallowgeophysics@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(emailBody)}`;
+            
+            return true;
+        }
+    </script>
+</body>
+</html>
